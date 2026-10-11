@@ -1,0 +1,18 @@
+node_modules/
+dist/
+
+# android/ is intentionally NOT ignored: the GitHub runner compiles it.
+# Only generated Gradle output inside it is ignored.
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/capacitor-cordova-android-plugins/
+
+.DS_Store
+*.log
+.idea/
+.vscode/
