@@ -44,12 +44,6 @@ const STEPS: readonly Step[] = [
   },
 ]
 
-const ASSURANCES: readonly string[] = [
-  'No fees to browse services',
-  'Clear quotations before you book',
-  'Updates at every step',
-]
-
 /** Smooth scroll inside Ionic content, where native anchor jumps do not apply. */
 function scrollToSection(id: string): void {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -89,17 +83,11 @@ function scrollToSection(id: string): void {
           </p>
           <div class="landing__hero-cta">
             <AppLink to="/auth" class="ff-btn ff-btn--primary">
-              Start a repair request
+              Get started
               <ArrowRight class="ff-icon ff-icon--sm" aria-hidden="true" />
             </AppLink>
             <a href="#how" class="ff-btn ff-btn--secondary" @click.prevent="scrollToSection('how')">See how it works</a>
           </div>
-          <ul class="landing__assurances">
-            <li v-for="item in ASSURANCES" :key="item">
-              <CircleCheck class="ff-icon ff-icon--sm" aria-hidden="true" />
-              <span class="ff-meta">{{ item }}</span>
-            </li>
-          </ul>
         </section>
 
         <section id="how" class="landing__section" aria-labelledby="how-title" tabindex="-1">
@@ -108,7 +96,7 @@ function scrollToSection(id: string): void {
             <h2 id="how-title" class="ff-h2">How FixFlow works</h2>
             <p class="ff-meta">Four steps from broken to fixed. Every step notifies the right person.</p>
           </div>
-          <ol class="landing__grid landing__grid--steps">
+          <ol class="landing__grid">
             <li v-for="(step, index) in STEPS" :key="step.title" class="ff-card landing__step">
               <div class="landing__step-top">
                 <span class="landing__step-num" aria-hidden="true">{{ index + 1 }}</span>
@@ -149,10 +137,6 @@ function scrollToSection(id: string): void {
                 <li>Book open slots without phone calls</li>
                 <li>Track status and rate the work</li>
               </ul>
-              <AppLink to="/auth" class="ff-btn ff-btn--primary ff-btn--block">
-                Request a repair
-                <ArrowRight class="ff-icon ff-icon--sm" aria-hidden="true" />
-              </AppLink>
             </article>
             <article class="ff-card landing__role">
               <h3 class="ff-h3">For shop owners</h3>
@@ -162,7 +146,6 @@ function scrollToSection(id: string): void {
                 <li>Publish availability and cut no shows</li>
                 <li>Keep every job status visible</li>
               </ul>
-              <AppLink to="/auth" class="ff-btn ff-btn--secondary ff-btn--block">Open the shop dashboard</AppLink>
             </article>
           </div>
         </section>
@@ -221,7 +204,6 @@ function scrollToSection(id: string): void {
               Get started
               <ArrowRight class="ff-icon ff-icon--sm" aria-hidden="true" />
             </AppLink>
-            <AppLink to="/auth" class="ff-btn ff-btn--secondary">Sign in</AppLink>
           </div>
         </section>
       </main>
@@ -230,10 +212,6 @@ function scrollToSection(id: string): void {
         <div class="landing__shell landing__footer-inner">
           <AppLogo />
           <p class="ff-meta">Request it. Quote it. Book it. Track it.</p>
-          <nav class="landing__footer-nav" aria-label="Footer">
-            <AppLink to="/auth" class="landing__footer-link">Sign in</AppLink>
-            <AppLink to="/auth" class="landing__footer-link">Start a request</AppLink>
-          </nav>
         </div>
       </footer>
     </ion-content>
@@ -243,7 +221,7 @@ function scrollToSection(id: string): void {
 <style scoped>
 .landing__shell {
   width: 100%;
-  max-width: 68rem;
+  max-width: var(--content-max);
   margin-inline: auto;
   padding-inline: var(--page-pad);
 }
@@ -311,19 +289,6 @@ function scrollToSection(id: string): void {
   width: 100%;
 }
 
-.landing__assurances {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.landing__assurances li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--color-success);
-}
-
 .landing__section {
   display: flex;
   flex-direction: column;
@@ -388,10 +353,6 @@ function scrollToSection(id: string): void {
   gap: var(--space-4);
 }
 
-.landing__role .ff-btn {
-  margin-top: auto;
-}
-
 .landing__list {
   display: flex;
   flex-direction: column;
@@ -453,23 +414,6 @@ function scrollToSection(id: string): void {
   padding-block: var(--space-6);
 }
 
-.landing__footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
-}
-
-.landing__footer-link {
-  color: var(--color-text-secondary);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  text-decoration: none;
-}
-
-.landing__footer-link:hover {
-  color: var(--color-brand-dark);
-}
-
 @media (min-width: 48rem) {
   .landing__bar-inner {
     gap: var(--space-4);
@@ -489,12 +433,6 @@ function scrollToSection(id: string): void {
     width: auto;
   }
 
-  .landing__assurances {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
   .landing__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -502,25 +440,6 @@ function scrollToSection(id: string): void {
   .landing__footer-inner {
     flex-direction: row;
     align-items: center;
-  }
-
-  .landing__footer-nav {
-    margin-inline-start: auto;
-  }
-}
-
-@media (min-width: 64rem) {
-  .landing__grid--steps {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  #services .landing__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .landing__final {
-    align-items: center;
-    text-align: center;
   }
 }
 </style>
