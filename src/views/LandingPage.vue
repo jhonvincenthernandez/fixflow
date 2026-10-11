@@ -230,6 +230,7 @@ function scrollToSection(id: string): void {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-top: var(--safe-top);
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
 }
