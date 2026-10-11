@@ -204,7 +204,13 @@ function switchMode(): void {
 
 .auth__demo {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-2);
+}
+
+@media (min-width: 28rem) {
+  .auth__demo {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>

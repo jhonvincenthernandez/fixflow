@@ -12,9 +12,13 @@ declare module 'vue-router' {
   }
 }
 
-// Every page is a lazy chunk so first paint only loads the sign-in screen.
+// Public landing page for signed-out visitors; the guard sends signed-in users home.
 const routes: RouteRecordRaw[] = [
-  { path: '/', redirect: '/tabs/home' },
+  {
+    path: '/',
+    component: () => import('@/views/LandingPage.vue'),
+    meta: { guestOnly: true },
+  },
   {
     path: '/auth',
     component: () => import('@/views/AuthPage.vue'),
